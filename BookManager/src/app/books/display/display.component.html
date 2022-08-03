@@ -1,0 +1,62 @@
+<div class="container">
+    <br>
+    <h1><b><i>Liệt Kê Sách </i></b></h1>
+    <hr>
+
+    <div class="col-sm-2 filter">
+        <select class="form-control form-control-sm" (change)="Filter($event.target)">
+            <option value="id">STT</option>
+            <option value="name">Book Name</option>
+            <option value="price">Price</option>
+            <option value="author">Author Name</option>
+        </select>
+    </div>
+    <table class="table">
+        <thead class="thead-blue">
+            <tr>
+                <th>STT</th>
+                <th>Tên Sách</th>
+                <th>Tên Tác Giả</th>
+                <th>Giá</th>
+                <th>Giảm Giá</th>
+                <th colspan="3">Đang Bán</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books; let i = index">
+                <td>{{ (currentPage -1 ) * 10 + i + 1}}</td>
+                <td><i>{{book.bookName}}</i></td>
+                <td>{{book.authorName}}</td>
+                <td>{{book.price}}</td>
+                <td *ngIf="book.discount != 0">{{book.discount}}%</td>
+                <td *ngIf="book.discount == 0">Không giảm giá </td>
+                <td>
+
+                    <mat-slide-toggle #toggleElement [checked]="!book.isDelete"
+                        (toggleChange)="TurnOff(i, toggleElement)">
+                    </mat-slide-toggle>
+                </td>
+                <td><a href="books/edit/{{book.id}}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="books/detail/{{book.id}}"><i class="fas fa-search"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <ul class="pagination justify-content-end">
+        <li *ngIf="currentPage > 1"  (click)="getPage(currentPage - 1)" class="page-item"><a class="page-link" >
+                << </a>
+        </li>
+        <li class="page-item"><a class="page-link" >{{currentPage}}</a></li>
+        <li *ngIf="totalPage >= currentPage + 1" (click)="getPage(currentPage + 1)" class="page-item"><a class="page-link"
+                >{{currentPage + 1}}</a></li>
+        <li *ngIf="totalPage >= currentPage + 2" (click)="getPage(currentPage + 2)" class="page-item"><a class="page-link"
+                >{{currentPage + 2}}</a></li>
+        <li *ngIf="totalPage >= currentPage + 3" (click)="getPage(currentPage + 3)" class="page-item"><a class="page-link"
+                >...</a></li>
+        <li *ngIf="totalPage > currentPage" (click)="getPage(currentPage + 1)" class="page-item"><a class="page-link" >>></a>
+        </li>
+    </ul>
+</div>
+
+<div class="add-button">
+    <a href="books/add"><i class="fas fa-plus"></i></a>
+</div>

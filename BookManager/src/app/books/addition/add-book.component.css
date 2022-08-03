@@ -1,0 +1,65 @@
+
+hr{
+    background-color: black;
+}
+
+.col{
+    margin-bottom: 1rem;
+}
+
+.btn{
+    margin-right: 30px;
+}
+
+
+.NgxEditor{
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.NgxEditor__Content {
+    min-height: 300px;
+}
+
+.row.tab {
+    display: none;
+}
+
+.rigth-btn{
+    position: absolute;
+    right: 0px;
+}
+
+.small-book{
+    height: 250px;
+    width: 250px;
+}
+
+.close-button{
+    background-color: #d1d6d4;
+    height:30px;
+    width: 30px;
+    text-align: center;
+    opacity: 0.3;
+    border-radius: 50%;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+}
+
+.close-button:hover{
+    opacity: 1;
+}
+
+.book-image{
+    position: relative;
+    margin-right: 15px;
+    margin-left: 25px;
+    margin-bottom: 15px;
+    display: inline-flex;
+}
+
+.btn-blue{
+    background-color: #030e69 !important;
+    color: white !important;
+}

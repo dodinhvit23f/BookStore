@@ -1,0 +1,36 @@
+.thead-blue {
+    background-color: #030e69;
+    color: white;
+}
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #1c4ce7ed;
+}
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #1d2fca;
+}
+
+.container {
+    max-height: 600px;
+}
+
+.table tbody {
+    border: 1px solid #c5ccd6;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.table tbody tr {
+    height: 60px;
+}
+
+.filter{
+    margin-left: 0%;
+    margin-bottom: 10px;
+    padding-left: 0px;
+}
+
+.filter select{
+    border-radius: 0px;
+}

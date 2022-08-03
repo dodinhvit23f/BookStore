@@ -1,0 +1,86 @@
+
+#book-description{
+   overflow: hidden;
+   height: 300px;
+}
+
+.small-image{
+    width: inherit;
+    height: inherit;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div .seleced-image{
+    width: inherit;
+    height: inherit;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+#book-detail div{
+    display: inline-block;
+}
+
+.left{
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.right{
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.book-info{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#book-detail div{
+    padding: 0;
+}
+
+.card-btn{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: none;
+}
+
+.collapse{
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.comment-block{
+    max-height: 400px;
+    overflow-y: auto;
+}
+.comments i{
+    margin-top: 0;
+}
+
+.comments{
+    display: inline-block;
+}
+
+.avatar{
+    text-align: center;
+    background-color: rgb(233, 231, 231);
+    width: 45px;
+    height: 45px;
+    font-size:30px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.scroll-bar{
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

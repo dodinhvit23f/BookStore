@@ -1,0 +1,48 @@
+<div class="container">
+    <div id="book-detail">
+        <div class="col-sm-7 left">
+            <div class="col-sm-12">
+                <div class="col-sm-2">
+                    <div class="col-sm-12 left scroll-bar" *ngFor="let image of book.bookImage;">
+                        <img src="{{image}}" class="small-image" (click)="swapImage(image)">
+                    </div>
+                </div>
+                <div class="col-sm-8 right">
+                    <img src="{{selectedImage}}" class="seleced-image">
+                </div>
+            </div>
+            <div class="col-sm-12" id="book-description">
+                <h3><b><i>Mô Tả:</i></b></h3>
+                <hr>
+                <div [innerHTML]="book.description">
+                </div>
+            </div>
+            <div class="collapse"><span><a (click)="collapse('book-description')">{{collpaseText}}</a></span></div>
+        </div>
+        <div class="col-sm-4 right book-info">
+            <h3><b>{{book.bookName}}</b></h3>
+            <hr>
+            <h4>Tác Giả: <b>{{book.authorName}}</b></h4>
+            <hr>
+            <h2 *ngIf="book.discount == 0">Giá: {{book.price | currency : 'VND'}}<small> đ</small></h2>
+            <h2 *ngIf="book.discount != 0">Giá: {{book.price * (100 - book.discount) /
+                100 | currency : 'VND' }}&nbsp;<del>{{book.price | currency : 'VND'}}</del></h2>
+            <button class="btn-blue card-btn">Thêm Vào Giỏ</button>
+        </div>
+
+
+        <div class="col-sm-7 comment-block">
+            <hr>
+            <h1>Bình Luận</h1>
+
+            <div class="comments ">
+                <div class="avatar"><i class="fa fa-user" ></i></div>
+                <div>John Doe <small><i>Posted on February 19, 2016</i></small>
+                    <p>Lorem ipsum...</p></div>  
+                    
+            </div>
+
+        </div>
+    </div>
+
+</div>

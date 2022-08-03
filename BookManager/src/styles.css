@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #5c5c5c !important;
+  line-height: 1.4 !important;
+}
+
+.btn-blue {
+  background-color: #030e69 !important;
+  color: white !important;
+}
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #1c4ce7ed;
+}
+
+.step-displays {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.add-button {
+  background-color: #1c4ce7ed;
+  color: white;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 7px;
+}
+
+.add-button>a:link, .add-button a:visited {
+  color: white;
+}
+
+.add-button>a:hover {
+  color: white;
+}
+
+.add-button>a:focus {
+  color: white;
+}

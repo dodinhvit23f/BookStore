@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="col-sm-8 ">
+        <br>
+        <h1><b>Book Management</b></h1>
+        <h2><i><b>{{Title}}</b></i></h2>
+        <hr>
+        <form [formGroup]="form">
+            <div class="row tab">
+                <div class="col col-sm-12 ">
+                    <label for="authorName">Author Name :</label>
+                    <input type="text" class="form-control" placeholder="Author Name" id="authorName"
+                        formControlName="authorName">
+                </div>
+
+                <div class="col col-sm-12 ">
+                    <label for="bookName">Book Name :</label>
+                    <input type="text" class="form-control" placeholder="Book Name" id="bookName"
+                        formControlName="bookName">
+                </div>
+
+                <div class="col col-sm-12">
+                    <label for="numberOfPage">Price :</label>
+                    <input type="number" class="form-control" placeholder="Book Price" id="numberOfPage" min="1000"
+                        step="1000" formControlName="price">
+                </div>
+            </div>
+
+            <div class="row tab">
+                <div class="col col-sm-12">
+                    <label for="numberOfPage">Book Description :</label>
+                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                    </ngx-editor-menu>
+                    <ngx-editor class="col-sm-12" [editor]="editor" [spellcheck]="true" [disabled]="false"
+                        formControlName="editorContent" [(ngModel)]="html">
+                    </ngx-editor>
+                </div>
+            </div>
+
+            <div class="row tab">
+                <div class="col col-sm-12">
+                    <div class="custom-file">
+                        <input type="file" multiple class="custom-file-input" accept="image/jpg, image/png, image/jpeg"
+                            id="customFile" formControlName="bookImage" (change)="onImageChangeFromFile($event)">
+                        <label class="custom-file-label" for="customFile"></label>
+                    </div>
+                </div>
+                <div class="col col-sm-12">
+                    <div *ngFor="let image of filesDisplay; let i = index" class="book-image">
+                        <div class="close-button">
+                            <a (click)="deleteImage(i)">
+                                <svg viewBox="0 0 24 24" focusable="false" height="24" width="24" jsname="lZmugf">
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                        <img class="small-book" alt="image" src={{image}} />
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-displays">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+
+            <button (click)="back()" name="btnBack" id="btnBack" type="button" class="btn btn-blue">Back</button>
+            <button (click)="next()" name="btnNext" id="btnNext" type="button"
+                class="btn btn-blue rigth-btn">Next</button>
+            <button (click)="submit()" name="btnSubmit" id="btnSubmit" type="submit"
+                class="btn btn-blue rigth-btn">Submit</button>
+
+        </form>
+    </div>
+</div>
