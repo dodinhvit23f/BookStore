@@ -56,7 +56,7 @@ public class Book implements Serializable {
 
 	//bi-directional many-to-one association to Bookcontent
 	@OneToMany(mappedBy="book")
-	private List<Bookcontent> bookcontents;
+	private List<BookContent> bookcontents;
 
 	//bi-directional many-to-one association to Comment
 	@OneToMany(mappedBy="book")
@@ -157,22 +157,22 @@ public class Book implements Serializable {
 		this.updatedDate = updateDate;
 	}
 
-	public List<Bookcontent> getBookcontents() {
+	public List<BookContent> getBookcontents() {
 		return this.bookcontents;
 	}
 
-	public void setBookcontents(List<Bookcontent> bookcontents) {
+	public void setBookcontents(List<BookContent> bookcontents) {
 		this.bookcontents = bookcontents;
 	}
 
-	public Bookcontent addBookcontent(Bookcontent bookcontent) {
+	public BookContent addBookcontent(BookContent bookcontent) {
 		getBookcontents().add(bookcontent);
 		bookcontent.setBook(this);
 
 		return bookcontent;
 	}
 
-	public Bookcontent removeBookcontent(Bookcontent bookcontent) {
+	public BookContent removeBookcontent(BookContent bookcontent) {
 		getBookcontents().remove(bookcontent);
 		bookcontent.setBook(null);
 

@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="bookcontent")
 @NamedQuery(name="Bookcontent.findAll", query="SELECT b FROM Bookcontent b")
-public class Bookcontent implements Serializable {
+public class BookContent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -46,7 +46,7 @@ public class Bookcontent implements Serializable {
 	@JoinColumn(name="book_id")
 	private Book book;
 
-	public Bookcontent() {
+	public BookContent() {
 	}
 
 	public Integer getId() {
