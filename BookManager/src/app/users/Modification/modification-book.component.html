@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="col-sm-8 ">
+        <br>
+        <h1><b>Tạo tài khoản</b></h1>
+        <hr>
+        <form [formGroup]="form">
+                <div class="col col-sm-12 ">
+                    <label for="userName">Tên Đăng Nhập</label>
+                    <input type="text" class="form-control" placeholder="Tên đăng nhập" id="userName"
+                        formControlName="userName">
+                </div>
+
+                <div class="col col-sm-12 ">
+                    <label for="userEmail">Email: </label>
+                    <input type="email" class="form-control" placeholder="Nhập Vào Email" id="userEmail"
+                        formControlName="userEmail">
+                </div>
+
+                <div class="col col-sm-12">
+                    <label for="userPassword">Mật Khẩu: </label>
+                    <input type="password" class="form-control" placeholder="Book Price" id="userPassword" formControlName="userPassword">
+                </div>
+                
+                <div class="col col-sm-12">
+                    <label for="userPasswordRe">Nhập Lại Mật Khẩu: </label>
+                    <input type="password" class="form-control" placeholder="Book Price" id="userPasswordRe" formControlName="userPasswordRe">
+                </div>
+            <button (click)="submit()" name="btnSubmit" id="btnSubmit" type="submit"
+                class="btn btn-blue rigth-btn">Submit</button>
+        </form>
+    </div>
+</div>
