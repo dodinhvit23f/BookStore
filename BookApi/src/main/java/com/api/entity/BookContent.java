@@ -32,14 +32,14 @@ public class BookContent implements Serializable {
 	@Column(name="is_free")
 	private Boolean isFree;
 
-	@Column(length=80)
-	private String title;
-
 	@Column(name="update_by")
 	private Integer updateBy;
 
 	@Column(name="update_date")
 	private Timestamp updateDate;
+
+    @Column(name="is_deleted")
+    private boolean isDeleted;
 
 	//bi-directional many-to-one association to Book
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -81,20 +81,12 @@ public class BookContent implements Serializable {
 		this.insertedDate = insertedDate;
 	}
 
-	public Boolean getIsFree() {
+	public Boolean isFree() {
 		return this.isFree;
 	}
 
 	public void setIsFree(Boolean isFree) {
 		this.isFree = isFree;
-	}
-
-	public String getTitle() {
-		return this.title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public Integer getUpdateBy() {
@@ -121,4 +113,11 @@ public class BookContent implements Serializable {
 		this.book = book;
 	}
 
+    public boolean isDeleted() {
+		return this.isDeleted;
+	}
+
+	public void setIsDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
 }

@@ -67,6 +67,11 @@ public class Utility {
 	}
 	
 	public static boolean isEmpty(Object arr[]) {
+
+        if(isNull(arr)){
+            return true;
+        }
+
 		if (arr.length <= 0) {
 			return true;
 		}

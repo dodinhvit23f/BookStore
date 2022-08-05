@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.api.book.request.BookAdditionRequest;
 import com.api.book.request.BookContentModificationRequest;
 import com.api.book.request.BookModificationRequest;
+import com.api.book.request.PageModificationRequest;
 import com.api.book.responses.BookPaginationResponse;
 import com.api.book.responses.BookResponse;
 import com.base.BaseResponse;
@@ -32,8 +34,9 @@ public interface BookModifyControllerI {
 	
 	final String ADMIN_URL = "admin/books";
 	final String ADMIN_RUD_BY_ID_URL = ADMIN_URL + "/id/{bookId}";
-	final String ADMIN_CREATE_CONTENT_BY_ID_URL = ADMIN_RUD_BY_ID_URL+"/page";
-	final String ADMIN_RUD_CONTENT_BY_ID_URL = ADMIN_CREATE_CONTENT_BY_ID_URL+"/id/{pageId}";
+	final String ADMIN_CUD_PAGE_URL = "admin/pages";
+	final String ADMIN_READ_PAGE_URL = ADMIN_CUD_PAGE_URL+"/id/{pageId}";
+
 	
 	final String IMAGE_DISPLAY = "images/{imageName}";
 	final String Cross_URL = "*";
@@ -67,17 +70,18 @@ public interface BookModifyControllerI {
 	ResponseEntity<byte[]> getBookImage(@PathVariable("imageName") String pictureName) throws FileNotFoundException;
 	
 	@Transactional
-	@RequestMapping(value = ADMIN_CREATE_CONTENT_BY_ID_URL, method = RequestMethod.POST)
+	@PostMapping(value = ADMIN_CUD_PAGE_URL)
 	@CrossOrigin(origins  = Cross_URL)
-	BaseResponse addNewBookChapter(@Valid BookContentModificationRequest request)throws EntityExistsException, QueryTimeoutException, FileUploadException;
+	BaseResponse addNewBookChapter(@Valid PageModificationRequest request)throws EntityExistsException, QueryTimeoutException, FileUploadException;
 
 	@Transactional
-	@PutMapping(ADMIN_RUD_CONTENT_BY_ID_URL)
+	@PutMapping(ADMIN_CUD_PAGE_URL)
 	@CrossOrigin(origins = Cross_URL)
-	BaseResponse updateBookChapter(@Valid  BookContentModificationRequest request, HttpSession session)throws EntityExistsException, QueryTimeoutException, FileUploadException;
+	BaseResponse updateBookChapter(@Valid  PageModificationRequest request, HttpSession session)throws EntityExistsException, QueryTimeoutException, FileUploadException;
 
 	@Transactional
-	@DeleteMapping(ADMIN_RUD_CONTENT_BY_ID_URL)
+	@DeleteMapping(ADMIN_CUD_PAGE_URL)
 	@CrossOrigin(origins = Cross_URL)
-	BaseResponse updateBookChapter(@PathVariable("pageId") int pageId )throws EntityExistsException, QueryTimeoutException;
+	BaseResponse deleteSoft(@PathVariable("pageId") int pageId )throws EntityExistsException, QueryTimeoutException;
+
 }

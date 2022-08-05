@@ -4,18 +4,23 @@ import java.util.List;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.QueryTimeoutException;
+import javax.persistence.EntityNotFoundException;
 
 import com.api.entity.BookContent;
 
 public interface PageDAOI {
-    
-    BookContent findPageByBookId(int bookId) throws EntityExistsException, QueryTimeoutException;
 
-    List<BookContent> findPagesByBookId(int bookId) throws EntityExistsException, QueryTimeoutException;
+    BookContent findPageById(int id) throws EntityNotFoundException, QueryTimeoutException;
 
-    void insertNewPage(String content, String title, int userId) throws EntityExistsException, QueryTimeoutException;
+    int count(int bookId) throws EntityExistsException, QueryTimeoutException;
 
-    void updatePageById(String content, String title, int BookId, int userId) throws EntityExistsException, QueryTimeoutException;
+    void insertNewPage(BookContent page)
+            throws EntityExistsException, QueryTimeoutException;
 
-    void deletePageById(int BookId)throws EntityExistsException, QueryTimeoutException;
+    void updatePageById(BookContent page)
+            throws EntityExistsException, QueryTimeoutException;
+
+    void deletePageById(int pageId) throws EntityExistsException, QueryTimeoutException;
+
+    BookContent findPageContentById(int id) throws EntityNotFoundException, QueryTimeoutException;
 }
