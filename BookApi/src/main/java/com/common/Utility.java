@@ -16,10 +16,13 @@ import java.time.ZonedDateTime;
 import java.util.Base64;
 import java.util.Locale;
 
+import javax.persistence.TypedQuery;
+
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Utility {
+    public static final String Cross_URL = "*";
 
 	public static final String GMT = "GMT";
 
@@ -65,6 +68,10 @@ public class Utility {
 
 		return false;
 	}
+
+    public static boolean isEmpty(TypedQuery<?> query){
+        return query.getFirstResult() == 0;
+    }
 	
 	public static boolean isEmpty(Object arr[]) {
 

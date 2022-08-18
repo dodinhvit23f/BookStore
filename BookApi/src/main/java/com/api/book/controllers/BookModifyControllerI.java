@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.api.book.request.BookAdditionRequest;
-import com.api.book.request.BookContentModificationRequest;
 import com.api.book.request.BookModificationRequest;
 import com.api.book.request.PageModificationRequest;
 import com.api.book.responses.BookPaginationResponse;
 import com.api.book.responses.BookResponse;
 import com.base.BaseResponse;
 import com.common.PaginationRequest;
+import com.common.Utility;
 
 
 public interface BookModifyControllerI {
@@ -39,30 +39,30 @@ public interface BookModifyControllerI {
 
 	
 	final String IMAGE_DISPLAY = "images/{imageName}";
-	final String Cross_URL = "*";
+	
 	
 	@Transactional
 	@RequestMapping(value = ADMIN_URL, method = RequestMethod.POST)
-	@CrossOrigin(origins  = Cross_URL)
+	@CrossOrigin(origins  = Utility.Cross_URL)
 	BaseResponse addNewBook(@Valid BookAdditionRequest request)throws EntityExistsException, QueryTimeoutException, FileUploadException;
 
 	@PutMapping(ADMIN_URL)
 	@Transactional
-	@CrossOrigin(origins = Cross_URL)
+	@CrossOrigin(origins = Utility.Cross_URL)
 	BaseResponse updateBook(@Valid  BookModificationRequest request, HttpSession session)throws EntityExistsException, QueryTimeoutException, FileUploadException;
 
 	@Transactional
 	@DeleteMapping(ADMIN_RUD_BY_ID_URL)
-	@CrossOrigin(origins = Cross_URL)
+	@CrossOrigin(origins = Utility.Cross_URL)
 	BaseResponse deleteBook(@PathVariable("bookId") int bookId)throws EntityExistsException, QueryTimeoutException;
 	
 	@Transactional
 	@GetMapping(ADMIN_RUD_BY_ID_URL)
-	@CrossOrigin(origins = Cross_URL)
+	@CrossOrigin(origins = Utility.Cross_URL)
 	BookResponse getBookForUpdate(@PathVariable("bookId") int bookId, HttpSession session)throws EntityExistsException, QueryTimeoutException;
 	
 	@GetMapping(ADMIN_URL)
-	@CrossOrigin(origins = Cross_URL)
+	@CrossOrigin(origins = Utility.Cross_URL)
 	BookPaginationResponse getBook(PaginationRequest pagination)throws EntityExistsException, QueryTimeoutException;
 	
 	@GetMapping(IMAGE_DISPLAY)
@@ -71,17 +71,17 @@ public interface BookModifyControllerI {
 	
 	@Transactional
 	@PostMapping(value = ADMIN_CUD_PAGE_URL)
-	@CrossOrigin(origins  = Cross_URL)
+	@CrossOrigin(origins  = Utility.Cross_URL)
 	BaseResponse addNewBookChapter(@Valid PageModificationRequest request)throws EntityExistsException, QueryTimeoutException, FileUploadException;
 
 	@Transactional
 	@PutMapping(ADMIN_CUD_PAGE_URL)
-	@CrossOrigin(origins = Cross_URL)
+	@CrossOrigin(origins = Utility.Cross_URL)
 	BaseResponse updateBookChapter(@Valid  PageModificationRequest request, HttpSession session)throws EntityExistsException, QueryTimeoutException, FileUploadException;
 
 	@Transactional
 	@DeleteMapping(ADMIN_CUD_PAGE_URL)
-	@CrossOrigin(origins = Cross_URL)
+	@CrossOrigin(origins = Utility.Cross_URL)
 	BaseResponse deleteSoft(@PathVariable("pageId") int pageId )throws EntityExistsException, QueryTimeoutException;
 
 }

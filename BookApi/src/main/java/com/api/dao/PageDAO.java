@@ -1,8 +1,5 @@
 package com.api.dao;
 
-
-import java.util.List;
-
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
@@ -11,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import com.api.entity.BookContent;
 import com.base.BaseDataAccess;
+import com.common.Utility;
 
 public class PageDAO extends BaseDataAccess<BookContent> implements PageDAOI {
 
@@ -20,14 +18,14 @@ public class PageDAO extends BaseDataAccess<BookContent> implements PageDAOI {
     }
 
     @Override
-    public BookContent findPageById(int id) throws EntityExistsException, QueryTimeoutException {
+    public BookContent findPageById(int id) throws EntityNotFoundException, QueryTimeoutException {
         return this.manager.find(BookContent.class, id);
     }
 
     @Override
-    public int count(int bookId) throws EntityExistsException, QueryTimeoutException {
+    public int count(int bookId) throws QueryTimeoutException {
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT COUNT(B.*) ");
+        sql.append("SELECT COUNT(B) ");
         sql.append("FROM BookContent B ");
         sql.append("JOIN Book ON Book.id = :bookId");
 
@@ -43,7 +41,7 @@ public class PageDAO extends BaseDataAccess<BookContent> implements PageDAOI {
         sql.append("WHERE B.id = :id");
         TypedQuery<BookContent> typeQ = this.manager.createQuery(sql.toString(), BookContent.class).setParameter("id", id);
 
-        if(typeQ.getFirstResult()  == 0){
+        if(Utility.isEmpty(typeQ)){
             throw new EntityNotFoundException();
         }
 
@@ -60,12 +58,12 @@ public class PageDAO extends BaseDataAccess<BookContent> implements PageDAOI {
 
     @Override
     public void updatePageById(BookContent page)
-            throws EntityExistsException, QueryTimeoutException {
+            throws EntityNotFoundException, QueryTimeoutException {
         this.update(page);
     }
 
     @Override
-    public void deletePageById(int pageId) throws EntityExistsException, QueryTimeoutException {
+    public void deletePageById(int pageId) throws EntityNotFoundException, QueryTimeoutException {
         BookContent pageUpdated = this.findPageById(pageId);
         pageUpdated.setIsDeleted(true);
         this.update(pageUpdated);

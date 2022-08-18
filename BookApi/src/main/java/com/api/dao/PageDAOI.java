@@ -12,15 +12,15 @@ public interface PageDAOI {
 
     BookContent findPageById(int id) throws EntityNotFoundException, QueryTimeoutException;
 
-    int count(int bookId) throws EntityExistsException, QueryTimeoutException;
+    int count(int bookId) throws QueryTimeoutException;
 
     void insertNewPage(BookContent page)
             throws EntityExistsException, QueryTimeoutException;
 
     void updatePageById(BookContent page)
-            throws EntityExistsException, QueryTimeoutException;
+            throws EntityNotFoundException, QueryTimeoutException;
 
-    void deletePageById(int pageId) throws EntityExistsException, QueryTimeoutException;
+    void deletePageById(int pageId) throws EntityNotFoundException, QueryTimeoutException;
 
     BookContent findPageContentById(int id) throws EntityNotFoundException, QueryTimeoutException;
 }

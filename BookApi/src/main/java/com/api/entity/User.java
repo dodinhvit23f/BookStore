@@ -26,6 +26,12 @@ public class User implements Serializable {
 	@Column(name="is_delete")
 	private Boolean isDelete;
 
+    @Column(name="is_active")
+	private Boolean isActive;
+
+    @Column(name="is_ban")
+	private Boolean isBan;
+
 	@Column(length=100)
 	private String password;
 
@@ -114,4 +120,18 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+    public boolean isActived(){
+        return this.isActive;
+    }
+
+    public void setActived(boolean isActived){
+        this.isActive = isActived;
+    }
+
+    public boolean isBaned(){
+        return this.isBan;
+    }
+    public void setBaned( boolean isBaned){
+        this.isBan = isBaned;
+    }
 }
